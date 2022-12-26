@@ -3,6 +3,7 @@ package com.example.paintapp
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 
@@ -35,13 +36,18 @@ class DrawView(
     override fun onTouchEvent(event: MotionEvent?): Boolean {
 
         return when(figureType) {
-            FigureType.LINE -> onTouchRect(event)
-            FigureType.RECT -> onTouchLine(event)
+            FigureType.LINE -> onTouchLine(event)
+            FigureType.RECT -> onTouchRect(event)
         }
 
     }
 
-    private fun onTouchRect(event: MotionEvent?) = PointF(event!!.x, event!!.y).let{
+    private fun onTouchRect(event: MotionEvent?) =
+//        event?.let {
+//            val p = PointF(event.x, event.y)
+//
+//        }
+        PointF(event!!.x, event.y).let{
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
                 mCurrentBox = Box(it, it)
@@ -76,8 +82,8 @@ class DrawView(
 
     override fun onDraw(canvas: Canvas?) {
         when(figureType) {
-            FigureType.LINE -> onDrawRect(canvas)
-            FigureType.RECT -> onDrawLine(canvas)
+            FigureType.LINE -> onDrawLine(canvas)
+            FigureType.RECT -> onDrawRect(canvas)
         }
     }
 
@@ -86,6 +92,7 @@ class DrawView(
     }
 
     private fun onDrawRect(canvas: Canvas?) {
+        Log.d("DrawViewLog", "In onDrawRect, figureType = $figureType")
         for (box in mBoxes) {
             val left = StrictMath.min(box.mOrigin.x, box.mCurrent.x)
             val right = StrictMath.max(box.mOrigin.x, box.mCurrent.x)
