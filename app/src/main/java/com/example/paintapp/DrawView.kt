@@ -24,6 +24,10 @@ class DrawView(
 
     private val mPath = Path()
 
+    fun reset() {
+        mPath.reset()
+        invalidate()
+    }
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         val action = event?.action
         var x: Float = event?.x!!.toFloat()

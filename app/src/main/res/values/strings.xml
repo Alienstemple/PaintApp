@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">PaintApp</string>
+    <string name="reset_text">Reset</string>
+    <string name="draw_rect_text">Прямоугольники</string>
+    <string name="draw_line_text">Линия</string>
 </resources>
