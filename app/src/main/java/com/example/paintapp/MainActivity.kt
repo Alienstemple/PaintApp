@@ -10,13 +10,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val drawView = findViewById<DrawView>(R.id.draw_view)
+//        val drawView = findViewById<DrawView>(R.id.draw_view)
+        val drawRectView = findViewById<DrawRectView>(R.id.draw_rect_view)
         val btnReset = findViewById<Button>(R.id.reset_button)
         val btnRect = findViewById<Button>(R.id.draw_rect)
         val btnLine = findViewById<Button>(R.id.draw_line)
 
         btnReset.setOnClickListener {
-            drawView.reset()
+//            drawView.reset()
+            drawRectView.reset()
         }
 
         btnRect.setOnClickListener {

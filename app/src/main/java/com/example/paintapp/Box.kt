@@ -2,7 +2,7 @@ package com.example.paintapp
 
 import android.graphics.PointF
 
-class Box(var mOrigin: PointF, var mCurrent: PointF = PointF(0f, 0f)) {
+data class Box(var mOrigin: PointF, var mCurrent: PointF) {
 
 //    constructor(mOrigin: PointF)
 //    constructor(mOrigin: PointF, mCurrent: PointF)
