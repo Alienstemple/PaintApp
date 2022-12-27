@@ -10,26 +10,28 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val drawView = findViewById<DrawView>(R.id.draw_view)
-//        val drawRectView = findViewById<DrawRectView>(R.id.draw_rect_view)
+//        val drawView = findViewById<DrawView>(R.id.draw_view)
+        val drawRectView = findViewById<DrawRectView>(R.id.draw_rect_view)
+
         val btnReset = findViewById<Button>(R.id.reset_button)
         val btnRect = findViewById<Button>(R.id.draw_rect)
         val btnLine = findViewById<Button>(R.id.draw_line)
 
         btnReset.setOnClickListener {
-            drawView.reset()
-//            drawRectView.reset()
+//            drawView.reset()
+            drawRectView.reset()
+//            lineFigureView.reset()
         }
 
         btnRect.setOnClickListener {
 //            drawView.currentColor = Color.BLUE
-            drawView.figureType = FigureType.RECT
+//            drawView.figureType = FigureType.RECT
             Log.d("Tag", "Rectangular chosen")
         }
 
         btnLine.setOnClickListener {
 //            drawView.currentColor = Color.GREEN
-            drawView.figureType = FigureType.LINE
+//            drawView.figureType = FigureType.LINE
         }
     }
 }
