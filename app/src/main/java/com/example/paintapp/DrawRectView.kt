@@ -38,13 +38,16 @@ class DrawRectView(
                     Random.nextInt(0, 255)
                 )
 
-                mFigure = BoxFigure(mCurrentPoint, mCurrentPoint, currentColor)
-//                mFigure = LineFigure(Path(), currentColor)  // TODO add if on FigType
+                mFigure = when (figureType) {
+                    FigureType.RECT -> BoxFigure(mCurrentPoint, mCurrentPoint, currentColor)
+                    FigureType.LINE -> LineFigure(Path(), currentColor)  // TODO add if on FigType
+                }
                 mFigure.setupPaint()
                 mFigure.onTouchEventDown(event)
                 mFigureList.add(mFigure)
                 true
             }
+
             MotionEvent.ACTION_MOVE -> {
                 mFigure.onTouchEventMove(event)
                 invalidate()

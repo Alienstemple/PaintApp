@@ -25,13 +25,13 @@ class MainActivity : AppCompatActivity() {
 
         btnRect.setOnClickListener {
 //            drawView.currentColor = Color.BLUE
-//            drawView.figureType = FigureType.RECT
+            drawRectView.figureType = FigureType.RECT
             Log.d("Tag", "Rectangular chosen")
         }
 
         btnLine.setOnClickListener {
 //            drawView.currentColor = Color.GREEN
-//            drawView.figureType = FigureType.LINE
+            drawRectView.figureType = FigureType.LINE
         }
     }
 }
