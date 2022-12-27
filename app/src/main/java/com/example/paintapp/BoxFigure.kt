@@ -1,31 +1,32 @@
 package com.example.paintapp
 
-import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
-import android.graphics.Path
-import android.util.AttributeSet
+import android.graphics.PointF
 import android.view.MotionEvent
-import android.view.View
+import java.lang.StrictMath.max
+import java.lang.StrictMath.min
 
-class LineFigure(
-    val mPath: Path, val mColor: Int
+class BoxFigure(
+    val mOrigin: PointF, var mCurrent: PointF, val mColor: Int
 ) : AbstractFigure() {
 
     override val mPaint = Paint()
-//    private val mPath = Path()
 
     override fun onTouchEventDown(event: MotionEvent) {
-        mPath.moveTo(event.x, event.y)
+        // mCurrent, mOrigin already initialized
     }
 
     override fun onTouchEventMove(event: MotionEvent) {
-        mPath.lineTo(event.x, event.y)  // TODO call invalidate() on upper level!
+        mCurrent = PointF(event.x, event.y)
     }
 
     override fun onDraw(canvas: Canvas?) {
-        canvas?.drawPath(mPath, mPaint)
+        val left = min(mOrigin.x, mCurrent.x)
+        val right = max(mOrigin.x, mCurrent.x)
+        val top = max(mOrigin.y, mCurrent.y)
+        val bottom = min(mOrigin.y, mCurrent.y)
+        canvas?.drawRect(left, top, right, bottom, mPaint)
     }
 
     override fun setupPaint() {
@@ -38,6 +39,6 @@ class LineFigure(
     }
 
     override fun reset() {
-        mPath.reset()
+        // Box list clears on top level
     }
 }

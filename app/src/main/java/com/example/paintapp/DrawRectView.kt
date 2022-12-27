@@ -14,21 +14,12 @@ class DrawRectView(
     attributeSet: AttributeSet? = null
 ) : View(context, attributeSet) {
 
-    private val mPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        flags = Paint.ANTI_ALIAS_FLAG
-        color = Color.YELLOW
-        strokeWidth = STROKE_WIDTH
-        style = Paint.Style.STROKE
-    }
-
-    private lateinit var mCurrentBox: Box
-    private var mBoxes: ArrayList<Box> = arrayListOf()
-
-    private lateinit var mFigure: LineFigure
+    private lateinit var mFigure: AbstractFigure
     private var mFigureList: ArrayList<AbstractFigure> = arrayListOf()
 
+    var figureType = FigureType.RECT
+
     fun reset() {
-//        mBoxes.clear()
         mFigureList.clear()
         invalidate()
     }
@@ -39,8 +30,6 @@ class DrawRectView(
 
         return when (action) {
             MotionEvent.ACTION_DOWN -> {
-//                mCurrentBox = Box(mCurrentPoint, mCurrentPoint)
-//                mBoxes.add(mCurrentBox)
 
                 val currentColor = Color.argb(
                     255,
@@ -49,14 +38,14 @@ class DrawRectView(
                     Random.nextInt(0, 255)
                 )
 
-                mFigure = LineFigure(Path(), currentColor)
+                mFigure = BoxFigure(mCurrentPoint, mCurrentPoint, currentColor)
+//                mFigure = LineFigure(Path(), currentColor)  // TODO add if on FigType
                 mFigure.setupPaint()
                 mFigure.onTouchEventDown(event)
                 mFigureList.add(mFigure)
                 true
             }
             MotionEvent.ACTION_MOVE -> {
-//                mCurrentBox.mCurrent = mCurrentPoint
                 mFigure.onTouchEventMove(event)
                 invalidate()
                 true
@@ -72,19 +61,9 @@ class DrawRectView(
     }
 
     override fun onDraw(canvas: Canvas?) {
-//        for (box in mBoxes) {
-//            val left = min(box.mOrigin.x, box.mCurrent.x)
-//            val right = max(box.mOrigin.x, box.mCurrent.x)
-//            val top = max(box.mOrigin.y, box.mCurrent.y)
-//            val bottom = min(box.mOrigin.y, box.mCurrent.y)
-//            canvas?.drawRect(left, top, right, bottom, mPaint)
-//        }
         for (figure in mFigureList) {
             figure.onDraw(canvas)
         }
     }
 
-    companion object {
-        const val STROKE_WIDTH = 10f
-    }
 }
