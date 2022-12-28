@@ -24,6 +24,11 @@ class DrawRectView(
         invalidate()
     }
 
+    fun back() {
+        mFigureList.removeLast()
+        invalidate()
+    }
+
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         val action = event?.action
         val mCurrentPoint = PointF(event!!.x, event.y)
