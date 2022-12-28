@@ -25,7 +25,7 @@ class DrawRectView(
     }
 
     fun back() {
-        mFigureList.removeLast()
+        mFigureList.removeLastOrNull()
         invalidate()
     }
 
