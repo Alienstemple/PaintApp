@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         val btnReset = findViewById<Button>(R.id.reset_button)
         val btnRect = findViewById<Button>(R.id.draw_rect)
         val btnLine = findViewById<Button>(R.id.draw_line)
+        val btnStraightLine = findViewById<Button>(R.id.draw_straight_line)
 
         btnReset.setOnClickListener {
 //            drawView.reset()
@@ -32,6 +33,10 @@ class MainActivity : AppCompatActivity() {
         btnLine.setOnClickListener {
 //            drawView.currentColor = Color.GREEN
             drawRectView.figureType = FigureType.LINE
+        }
+
+        btnStraightLine.setOnClickListener{
+            drawRectView.figureType = FigureType.STRAIGHT
         }
     }
 }

@@ -51,6 +51,7 @@ class DrawRectView(
                 true
             }
             MotionEvent.ACTION_UP -> {
+                mFigure.onTouchEventUp(event)
                 true
             }
 

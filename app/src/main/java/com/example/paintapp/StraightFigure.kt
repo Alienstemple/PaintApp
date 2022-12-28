@@ -4,10 +4,8 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.PointF
 import android.view.MotionEvent
-import java.lang.StrictMath.max
-import java.lang.StrictMath.min
 
-class BoxFigure(
+class StraightFigure(
     val mOrigin: PointF, var mCurrent: PointF, val mColor: Int
 ) : AbstractFigure() {
 
@@ -25,11 +23,7 @@ class BoxFigure(
     }
 
     override fun onDraw(canvas: Canvas) {
-        val left = min(mOrigin.x, mCurrent.x)
-        val right = max(mOrigin.x, mCurrent.x)
-        val top = max(mOrigin.y, mCurrent.y)
-        val bottom = min(mOrigin.y, mCurrent.y)
-        canvas.drawRect(left, top, right, bottom, mPaint)
+        canvas.drawLine(mOrigin.x, mOrigin.y, mCurrent.x, mCurrent.y, mPaint)
     }
 
     override fun setupPaint() {

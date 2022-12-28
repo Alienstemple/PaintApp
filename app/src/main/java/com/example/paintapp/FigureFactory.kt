@@ -7,5 +7,6 @@ class FigureFactory {
     fun createFigure(figureType: FigureType, currentColor: Int, mCurrentPoint: PointF): AbstractFigure = when (figureType) {
         FigureType.RECT -> BoxFigure(mCurrentPoint, mCurrentPoint, currentColor)
         FigureType.LINE -> LineFigure(Path(), currentColor)
+        FigureType.STRAIGHT -> StraightFigure(mCurrentPoint, mCurrentPoint, currentColor)
     }
 }

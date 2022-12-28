@@ -24,6 +24,9 @@ class LineFigure(
         mPath.lineTo(event.x, event.y)  // TODO call invalidate() on upper level!
     }
 
+    override fun onTouchEventUp(event: MotionEvent) {
+    }
+
     override fun onDraw(canvas: Canvas) {
         canvas.drawPath(mPath, mPaint)
     }

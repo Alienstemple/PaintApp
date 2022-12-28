@@ -19,26 +19,52 @@
         android:layout_height="0dp"
         android:layout_weight="10" />
 
-    <Button
-        android:id="@+id/reset_button"
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="@string/reset_text"
-        android:textSize="14sp" />
+        android:layout_weight="1">
 
-    <Button
-        android:id="@+id/draw_rect"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="@string/draw_rect_text" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
 
-    <Button
-        android:id="@+id/draw_line"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="@string/draw_line_text" />
+            <Button
+                android:id="@+id/reset_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/reset_text"
+                android:textSize="14sp"
+                style="?android:attr/buttonBarButtonStyle" />
+
+            <Button
+                android:id="@+id/draw_rect"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/draw_rect_text" />
+
+            <Button
+                android:id="@+id/draw_line"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/draw_line_text"
+                style="?android:attr/buttonBarButtonStyle" />
+
+            <Button
+                android:id="@+id/draw_straight_line"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/draw_straight_line_text"
+                style="?android:attr/buttonBarButtonStyle" />
+
+            <Button
+                android:id="@+id/step_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/step_back_text"
+                style="?android:attr/buttonBarButtonStyle" />
+        </LinearLayout>
+    </HorizontalScrollView>
 
 </LinearLayout>

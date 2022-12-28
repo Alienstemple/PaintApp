@@ -30,6 +30,7 @@ class DrawView(
         when(figureType) {
             FigureType.LINE -> mPath.reset()
             FigureType.RECT -> mBoxes.clear()
+            FigureType.STRAIGHT -> mPath.reset()
         }
         invalidate()
     }
@@ -38,6 +39,7 @@ class DrawView(
         return when(figureType) {
             FigureType.LINE -> onTouchLine(event)
             FigureType.RECT -> onTouchRect(event)
+            FigureType.STRAIGHT -> onTouchLine(event)
         }
 
     }
@@ -84,6 +86,7 @@ class DrawView(
         when(figureType) {
             FigureType.LINE -> onDrawLine(canvas)
             FigureType.RECT -> onDrawRect(canvas)
+            FigureType.STRAIGHT -> onDrawLine(canvas)
         }
     }
 

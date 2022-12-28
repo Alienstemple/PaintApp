@@ -3,4 +3,6 @@
     <string name="reset_text">Reset</string>
     <string name="draw_rect_text">Прямоугольники</string>
     <string name="draw_line_text">Линия</string>
+    <string name="draw_straight_line_text">Прямая</string>
+    <string name="step_back_text">Назад</string>
 </resources>
