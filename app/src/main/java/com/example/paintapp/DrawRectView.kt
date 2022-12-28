@@ -38,10 +38,7 @@ class DrawRectView(
                     Random.nextInt(0, 255)
                 )
 
-                mFigure = when (figureType) {
-                    FigureType.RECT -> BoxFigure(mCurrentPoint, mCurrentPoint, currentColor)
-                    FigureType.LINE -> LineFigure(Path(), currentColor)  // TODO add if on FigType
-                }
+                mFigure = FigureFactory().createFigure(figureType, currentColor, mCurrentPoint)
                 mFigure.setupPaint()
                 mFigure.onTouchEventDown(event)
                 mFigureList.add(mFigure)
