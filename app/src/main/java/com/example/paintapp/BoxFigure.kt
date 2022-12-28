@@ -21,12 +21,12 @@ class BoxFigure(
         mCurrent = PointF(event.x, event.y)
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         val left = min(mOrigin.x, mCurrent.x)
         val right = max(mOrigin.x, mCurrent.x)
         val top = max(mOrigin.y, mCurrent.y)
         val bottom = min(mOrigin.y, mCurrent.y)
-        canvas?.drawRect(left, top, right, bottom, mPaint)
+        canvas.drawRect(left, top, right, bottom, mPaint)
     }
 
     override fun setupPaint() {

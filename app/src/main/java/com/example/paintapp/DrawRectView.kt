@@ -65,7 +65,7 @@ class DrawRectView(
 
     override fun onDraw(canvas: Canvas?) {
         for (figure in mFigureList) {
-            figure.onDraw(canvas)
+            figure.onDraw(checkNotNull(canvas))
         }
     }
 
