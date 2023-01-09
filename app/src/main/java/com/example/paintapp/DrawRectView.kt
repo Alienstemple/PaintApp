@@ -19,6 +19,7 @@ class DrawRectView(
     private var mFigureList: ArrayList<AbstractFigure> = arrayListOf()
 
     var figureType = FigureType.RECT
+    var currentColor = Color.BLACK
 
     fun reset() {
         mFigureList.clear()
@@ -35,13 +36,6 @@ class DrawRectView(
         val pointerIndex = event.actionIndex
         val pointerId = event.getPointerId(pointerIndex)
         val point = PointF(event.getX(pointerIndex), event.getY(pointerIndex))
-
-        val currentColor = Color.argb(
-            255,
-            Random.nextInt(0, 255),
-            Random.nextInt(0, 255),
-            Random.nextInt(0, 255)
-        )
 
         return when (action) {
             MotionEvent.ACTION_DOWN -> {

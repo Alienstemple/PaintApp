@@ -1,9 +1,11 @@
 package com.example.paintapp
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         val drawRectView = findViewById<DrawRectView>(R.id.draw_rect_view)
 
         val btnReset = findViewById<Button>(R.id.reset_button)
+        val btnChangeColor = findViewById<Button>(R.id.chng_color_button)
         val btnPolygon = findViewById<Button>(R.id.draw_polygon)
         val btnRect = findViewById<Button>(R.id.draw_rect)
         val btnLine = findViewById<Button>(R.id.draw_line)
@@ -24,6 +27,15 @@ class MainActivity : AppCompatActivity() {
 //            drawView.reset()
             drawRectView.reset()
 //            lineFigureView.reset()
+        }
+
+        btnChangeColor.setOnClickListener {
+            drawRectView.currentColor = Color.argb(
+                255,
+                Random.nextInt(0, 255),
+                Random.nextInt(0, 255),
+                Random.nextInt(0, 255)
+            )
         }
 
         btnPolygon.setOnClickListener {

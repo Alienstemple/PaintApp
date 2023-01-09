@@ -6,4 +6,5 @@
     <string name="draw_straight_line_text">Прямая</string>
     <string name="step_back_text">Назад</string>
     <string name="polygon">Многоугольники</string>
+    <string name="change_color">цвет</string>
 </resources>
