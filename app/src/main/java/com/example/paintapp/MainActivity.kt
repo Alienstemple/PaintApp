@@ -12,8 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val drawView = findViewById<DrawView>(R.id.draw_view)
-        val drawRectView = findViewById<DrawRectView>(R.id.draw_rect_view)
+        val drawView = findViewById<DrawView>(R.id.draw_rect_view)
 
         val btnReset = findViewById<Button>(R.id.reset_button)
         val btnChangeColor = findViewById<Button>(R.id.chng_color_button)
@@ -25,12 +24,12 @@ class MainActivity : AppCompatActivity() {
 
         btnReset.setOnClickListener {
 //            drawView.reset()
-            drawRectView.reset()
+            drawView.reset()
 //            lineFigureView.reset()
         }
 
         btnChangeColor.setOnClickListener {
-            drawRectView.currentColor = Color.argb(
+            drawView.currentColor = Color.argb(
                 255,
                 Random.nextInt(0, 255),
                 Random.nextInt(0, 255),
@@ -39,26 +38,26 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnPolygon.setOnClickListener {
-            drawRectView.figureType = FigureType.POLY
+            drawView.figureType = FigureType.POLY
         }
 
         btnRect.setOnClickListener {
 //            drawView.currentColor = Color.BLUE
-            drawRectView.figureType = FigureType.RECT
+            drawView.figureType = FigureType.RECT
             Log.d("Tag", "Rectangular chosen")
         }
 
         btnLine.setOnClickListener {
 //            drawView.currentColor = Color.GREEN
-            drawRectView.figureType = FigureType.LINE
+            drawView.figureType = FigureType.LINE
         }
 
         btnStraightLine.setOnClickListener{
-            drawRectView.figureType = FigureType.STRAIGHT
+            drawView.figureType = FigureType.STRAIGHT
         }
 
         btnBack.setOnClickListener {
-            drawRectView.back()
+            drawView.back()
         }
     }
 }

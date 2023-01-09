@@ -9,106 +9,76 @@ import android.view.View
 
 class DrawView(
     context: Context,
-    attributeSet: AttributeSet? = null,
-//    defStyleAttr: Int = 0
-) : View(context, attributeSet /*, defStyleAttr*/) {
+    attributeSet: AttributeSet? = null
+) : View(context, attributeSet) {
 
-    private val mPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        flags = Paint.ANTI_ALIAS_FLAG
-        color = Color.YELLOW
-        strokeWidth = STROKE_WIDTH
-        style = Paint.Style.STROKE
-    }
+    private lateinit var mFigure: AbstractFigure
+    private var mFigureList: ArrayList<AbstractFigure> = arrayListOf()
 
-    private val mPath = Path()
-    private lateinit var mCurrentBox: Box
-    private var mBoxes: ArrayList<Box> = arrayListOf()
-
-    var figureType = FigureType.LINE
+    var figureType = FigureType.RECT
+    var currentColor = Color.BLACK
 
     fun reset() {
-        when(figureType) {
-            FigureType.LINE -> mPath.reset()
-            FigureType.RECT -> mBoxes.clear()
-            FigureType.STRAIGHT -> mPath.reset()
-            FigureType.POLY -> mPath.reset()
-        }
+        mFigureList.clear()
         invalidate()
     }
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
 
-        return when(figureType) {
-            FigureType.LINE -> onTouchLine(event)
-            FigureType.RECT -> onTouchRect(event)
-            FigureType.STRAIGHT -> onTouchLine(event)
-            FigureType.POLY -> onTouchLine(event)
-        }
-
+    fun back() {
+        mFigureList.removeLastOrNull()
+        invalidate()
     }
 
-    private fun onTouchRect(event: MotionEvent?) =
-//        event?.let {
-//            val p = PointF(event.x, event.y)
-//
-//        }
-        PointF(event!!.x, event.y).let{
-        when(event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                mCurrentBox = Box(it, it)
-                mBoxes.add(mCurrentBox)
-                return@let true
-            }
-            MotionEvent.ACTION_MOVE -> {
-                mCurrentBox.mCurrent = it
-                invalidate()
-                return@let true
-            }
-            MotionEvent.ACTION_UP -> {
-                return@let true
-            }
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        val action = event.actionMasked
+        val pointerIndex = event.actionIndex
+        val pointerId = event.getPointerId(pointerIndex)
+        val point = PointF(event.getX(pointerIndex), event.getY(pointerIndex))
 
-            else -> {super.onTouchEvent(event)}
-        }
-    }
-
-    private fun onTouchLine(event: MotionEvent?) = when (event?.action) {
+        return when (action) {
             MotionEvent.ACTION_DOWN -> {
-                mPath.moveTo(event.x, event.y)
+                mFigure = FigureFactory().createFigure(figureType, currentColor, point)
+                mFigure.setupPaint()
+                mFigure.onTouchEventDown(event)
+                mFigureList.add(mFigure)
                 true
             }
-            MotionEvent.ACTION_MOVE -> {
-                mPath.lineTo(event.x, event.y)
+            MotionEvent.ACTION_POINTER_DOWN -> {
+                mFigure.onTouchEventDown(event)
+                mFigure.reset()
                 invalidate()
                 true
             }
-            else -> super.onTouchEvent(event)
+
+            MotionEvent.ACTION_MOVE -> {
+                // Запретим двигать нулевой индекс:
+                Log.d("Poly", "Registered action.MOVE")
+                mFigure.onTouchEventMove(event)
+                mFigure.reset()
+                invalidate()
+
+                true
+            }
+            MotionEvent.ACTION_UP,
+            MotionEvent.ACTION_POINTER_UP -> {
+                mFigure.onTouchEventUp(event)
+                true
+            }
+
+            else -> {
+                super.onTouchEvent(event)
+            }
         }
+    }
 
     override fun onDraw(canvas: Canvas?) {
-        when(figureType) {
-            FigureType.LINE -> onDrawLine(canvas)
-            FigureType.RECT -> onDrawRect(canvas)
-            FigureType.STRAIGHT -> onDrawLine(canvas)
-            FigureType.POLY -> onDrawLine(canvas)
+        canvas?.let {
+            mFigureList.forEach { it.onDraw(canvas) }
         }
-    }
 
-    private fun onDrawLine(canvas: Canvas?) {
-        canvas?.drawPath(mPath, mPaint)
-    }
-
-    private fun onDrawRect(canvas: Canvas?) {
-        Log.d("DrawViewLog", "In onDrawRect, figureType = $figureType")
-        for (box in mBoxes) {
-            val left = StrictMath.min(box.mOrigin.x, box.mCurrent.x)
-            val right = StrictMath.max(box.mOrigin.x, box.mCurrent.x)
-            val top = StrictMath.max(box.mOrigin.y, box.mCurrent.y)
-            val bottom = StrictMath.min(box.mOrigin.y, box.mCurrent.y)
-            canvas?.drawRect(left, top, right, bottom, mPaint)
-        }
     }
 
     companion object {
         const val STROKE_WIDTH = 10f
     }
+
 }

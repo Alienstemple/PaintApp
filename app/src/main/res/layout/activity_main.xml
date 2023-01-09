@@ -13,7 +13,7 @@
 <!--        android:layout_height="0dp"-->
 <!--        android:layout_weight="10" />-->
 
-    <com.example.paintapp.DrawRectView
+    <com.example.paintapp.DrawView
         android:id="@+id/draw_rect_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"

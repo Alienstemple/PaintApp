@@ -62,7 +62,7 @@ class PolygonFigure (
             mPath.lineTo(it.x, it.y)
             mPath.moveTo(it.x, it.y)
         }
-//        mPath.close()
+//        mPath.close()  // FIXME предпоследний отрезок не рисует. Убрать close - рисует.
         // Наконец, происходит отрисовка фигуры
         canvas.drawPath(mPath, mPaint)
     }
