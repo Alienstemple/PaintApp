@@ -3,6 +3,7 @@ package com.example.paintapp
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import java.lang.StrictMath.max
@@ -50,15 +51,20 @@ class DrawRectView(
                 mFigureList.add(mFigure)
                 true
             }
-            MotionEvent.ACTION_POINTER_DOWN-> {
+            MotionEvent.ACTION_POINTER_DOWN -> {
                 mFigure.onTouchEventDown(event)
-
+                mFigure.reset()
+                invalidate()
                 true
             }
 
             MotionEvent.ACTION_MOVE -> {
+                // Запретим двигать нулевой индекс:
+                Log.d("Poly", "Registered action.MOVE")
                 mFigure.onTouchEventMove(event)
+                mFigure.reset()
                 invalidate()
+
                 true
             }
             MotionEvent.ACTION_UP,
