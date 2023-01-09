@@ -16,7 +16,7 @@ class StraightFigure(
     }
 
     override fun onTouchEventMove(event: MotionEvent) {
-        mCurrent = PointF(event.x, event.y)
+        mCurrent.set(event.x, event.y)
     }
 
     override fun onTouchEventUp(event: MotionEvent) {
