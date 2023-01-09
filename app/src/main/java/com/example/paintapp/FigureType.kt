@@ -1,5 +1,5 @@
 package com.example.paintapp
 
 enum class FigureType {
-    LINE, RECT, STRAIGHT
+    LINE, RECT, STRAIGHT, POLY
 }

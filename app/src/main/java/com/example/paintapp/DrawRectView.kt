@@ -29,24 +29,30 @@ class DrawRectView(
         invalidate()
     }
 
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        val action = event?.action
-        val mCurrentPoint = PointF(event!!.x, event.y)
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        val action = event.actionMasked
+        val pointerIndex = event.actionIndex
+        val pointerId = event.getPointerId(pointerIndex)
+        val point = PointF(event.getX(pointerIndex), event.getY(pointerIndex))
+
+        val currentColor = Color.argb(
+            255,
+            Random.nextInt(0, 255),
+            Random.nextInt(0, 255),
+            Random.nextInt(0, 255)
+        )
 
         return when (action) {
             MotionEvent.ACTION_DOWN -> {
-
-                val currentColor = Color.argb(
-                    255,
-                    Random.nextInt(0, 255),
-                    Random.nextInt(0, 255),
-                    Random.nextInt(0, 255)
-                )
-
-                mFigure = FigureFactory().createFigure(figureType, currentColor, mCurrentPoint)
+                mFigure = FigureFactory().createFigure(figureType, currentColor, point)
                 mFigure.setupPaint()
                 mFigure.onTouchEventDown(event)
                 mFigureList.add(mFigure)
+                true
+            }
+            MotionEvent.ACTION_POINTER_DOWN-> {
+                mFigure.onTouchEventDown(event)
+
                 true
             }
 
@@ -55,7 +61,8 @@ class DrawRectView(
                 invalidate()
                 true
             }
-            MotionEvent.ACTION_UP -> {
+            MotionEvent.ACTION_UP,
+            MotionEvent.ACTION_POINTER_UP -> {
                 mFigure.onTouchEventUp(event)
                 true
             }

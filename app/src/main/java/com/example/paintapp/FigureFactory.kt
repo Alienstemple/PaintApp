@@ -8,5 +8,6 @@ class FigureFactory {
         FigureType.RECT -> BoxFigure(mCurrentPoint, mCurrentPoint, currentColor)
         FigureType.LINE -> LineFigure(Path(), currentColor)
         FigureType.STRAIGHT -> StraightFigure(mCurrentPoint, mCurrentPoint, currentColor)
+        FigureType.POLY -> PolygonFigure(Path(), currentColor)
     }
 }

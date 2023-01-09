@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         val drawRectView = findViewById<DrawRectView>(R.id.draw_rect_view)
 
         val btnReset = findViewById<Button>(R.id.reset_button)
+        val btnPolygon = findViewById<Button>(R.id.draw_polygon)
         val btnRect = findViewById<Button>(R.id.draw_rect)
         val btnLine = findViewById<Button>(R.id.draw_line)
         val btnStraightLine = findViewById<Button>(R.id.draw_straight_line)
@@ -23,6 +24,10 @@ class MainActivity : AppCompatActivity() {
 //            drawView.reset()
             drawRectView.reset()
 //            lineFigureView.reset()
+        }
+
+        btnPolygon.setOnClickListener {
+            drawRectView.figureType = FigureType.POLY
         }
 
         btnRect.setOnClickListener {

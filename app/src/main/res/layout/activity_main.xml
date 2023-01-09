@@ -38,11 +38,18 @@
                 style="?android:attr/buttonBarButtonStyle" />
 
             <Button
-                android:id="@+id/draw_rect"
+                android:id="@+id/draw_polygon"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/draw_rect_text" />
+                android:text="@string/polygon" />
+
+            <Button
+                android:id="@+id/draw_rect"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/draw_rect_text"
+                style="?android:attr/buttonBarButtonStyle"/>
 
             <Button
                 android:id="@+id/draw_line"
