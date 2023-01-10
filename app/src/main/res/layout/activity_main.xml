@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/reset_text"
-                android:textSize="14sp"
+                android:textSize="@dimen/button_text_size"
                 style="?android:attr/buttonBarButtonStyle" />
 
             <Button
