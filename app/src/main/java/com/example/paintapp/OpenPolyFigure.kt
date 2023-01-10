@@ -8,7 +8,7 @@ import android.util.Log
 import android.view.MotionEvent
 
 class OpenPolyFigure (
-        val path: Path, val color: Int
+        val path: Path, val paintColor: Int
     ) : AbstractFigure() {
 
         override val paint = Paint()
@@ -65,7 +65,7 @@ class OpenPolyFigure (
         override fun setupPaint() {
             paint.apply {
                 flags = Paint.ANTI_ALIAS_FLAG
-                color = color
+                color = paintColor
                 strokeWidth = DrawView.STROKE_WIDTH
                 style = Paint.Style.STROKE
             }

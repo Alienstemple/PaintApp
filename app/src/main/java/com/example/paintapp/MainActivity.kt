@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
                 Random.nextInt(0, 255),
                 Random.nextInt(0, 255)
             )
+            Log.d("Main", "Current color set = ${drawView.currentColor}")
         }
 
         btnOpenPolygon.setOnClickListener {

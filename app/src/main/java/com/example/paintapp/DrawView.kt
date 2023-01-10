@@ -37,6 +37,7 @@ class DrawView(
 
         return when (action) {
             MotionEvent.ACTION_DOWN -> {
+                Log.d("Main", "CurrentColor = $currentColor")
                 figure = FigureFactory().createFigure(figureType, currentColor, point)
                 figure.setupPaint()
                 figure.onTouchEventDown(event)

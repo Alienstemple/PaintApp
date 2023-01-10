@@ -9,7 +9,7 @@ import java.lang.StrictMath.max
 import java.lang.StrictMath.min
 
 class BoxFigure(
-    val color: Int
+    val paintColor: Int
 ) : AbstractFigure() {
 
     override val paint = Paint()
@@ -48,7 +48,7 @@ class BoxFigure(
     override fun setupPaint() {
         paint.apply {
             flags = Paint.ANTI_ALIAS_FLAG
-            color = color
+            color = paintColor
             strokeWidth = DrawView.STROKE_WIDTH
             style = Paint.Style.STROKE
         }

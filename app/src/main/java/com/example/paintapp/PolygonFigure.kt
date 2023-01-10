@@ -8,7 +8,7 @@ import android.util.Log
 import android.view.MotionEvent
 
 class PolygonFigure (
-    val path: Path, val color: Int
+    val path: Path, val paintColor: Int
 ) : AbstractFigure() {
 
     override val paint = Paint()
@@ -71,10 +71,11 @@ class PolygonFigure (
     override fun setupPaint() {
         paint.apply {
             flags = Paint.ANTI_ALIAS_FLAG
-            color = color
+            color = paintColor
             strokeWidth = DrawView.STROKE_WIDTH
             style = Paint.Style.STROKE
         }
+        Log.d("Main", "In setupPaint color = ${paint.color}")
     }
 
     override fun reset() {
