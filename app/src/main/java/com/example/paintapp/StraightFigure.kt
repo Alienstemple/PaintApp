@@ -6,31 +6,31 @@ import android.graphics.PointF
 import android.view.MotionEvent
 
 class StraightFigure(
-    val mOrigin: PointF, var mCurrent: PointF, val mColor: Int
+    val origin: PointF, var current: PointF, val color: Int
 ) : AbstractFigure() {
 
-    override val mPaint = Paint()
+    override val paint = Paint()
 
     override fun onTouchEventDown(event: MotionEvent) {
-        // mCurrent, mOrigin already initialized
+        // current, origin already initialized
     }
 
     override fun onTouchEventMove(event: MotionEvent) {
-//        mCurrent.set(event.x, event.y)  // FIXME doesn't work
-        mCurrent = PointF(event.x, event.y)
+//        current.set(event.x, event.y)  // FIXME doesn't work
+        current = PointF(event.x, event.y)
     }
 
     override fun onTouchEventUp(event: MotionEvent) {
     }
 
     override fun onDraw(canvas: Canvas) {
-        canvas.drawLine(mOrigin.x, mOrigin.y, mCurrent.x, mCurrent.y, mPaint)
+        canvas.drawLine(origin.x, origin.y, current.x, current.y, paint)
     }
 
     override fun setupPaint() {
-        mPaint.apply {
+        paint.apply {
             flags = Paint.ANTI_ALIAS_FLAG
-            color = mColor
+            color = color
             strokeWidth = DrawView.STROKE_WIDTH
             style = Paint.Style.STROKE
         }

@@ -9,10 +9,10 @@ import java.lang.StrictMath.max
 import java.lang.StrictMath.min
 
 class BoxFigure(
-    val mColor: Int
+    val color: Int
 ) : AbstractFigure() {
 
-    override val mPaint = Paint()
+    override val paint = Paint()
     private val vertices = HashMap<Int, PointF>()
 
     override fun onTouchEventDown(event: MotionEvent) {
@@ -42,13 +42,13 @@ class BoxFigure(
         val right = vertices.maxBy { it.value.x }.value.x
         val top = vertices.maxBy { it.value.y }.value.y
         val bottom = vertices.minBy { it.value.y }.value.y
-        canvas.drawRect(left, top, right, bottom, mPaint)
+        canvas.drawRect(left, top, right, bottom, paint)
     }
 
     override fun setupPaint() {
-        mPaint.apply {
+        paint.apply {
             flags = Paint.ANTI_ALIAS_FLAG
-            color = mColor
+            color = color
             strokeWidth = DrawView.STROKE_WIDTH
             style = Paint.Style.STROKE
         }

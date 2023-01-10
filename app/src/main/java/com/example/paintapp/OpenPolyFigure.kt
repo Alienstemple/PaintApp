@@ -8,10 +8,10 @@ import android.util.Log
 import android.view.MotionEvent
 
 class OpenPolyFigure (
-        val mPath: Path, val mColor: Int
+        val path: Path, val color: Int
     ) : AbstractFigure() {
 
-        override val mPaint = Paint()
+        override val paint = Paint()
         private val vertices = HashMap<Int, PointF>()
 
         /**
@@ -49,29 +49,29 @@ class OpenPolyFigure (
         override fun onDraw(canvas: Canvas) {
             // Ставим начало пути в начальную точку
             vertices[0]?.let {
-                mPath.moveTo(it.x, it.y)
+                path.moveTo(it.x, it.y)
             }
             // Путь "останавливается" в вершинах
             vertices.forEach {(k, v) ->
                 if (k != 0) {
-                    mPath.lineTo(v.x, v.y)
-                    mPath.moveTo(v.x, v.y)
+                    path.lineTo(v.x, v.y)
+                    path.moveTo(v.x, v.y)
                 }
             }
             // Наконец, происходит отрисовка фигуры
-            canvas.drawPath(mPath, mPaint)
+            canvas.drawPath(path, paint)
         }
 
         override fun setupPaint() {
-            mPaint.apply {
+            paint.apply {
                 flags = Paint.ANTI_ALIAS_FLAG
-                color = mColor
+                color = color
                 strokeWidth = DrawView.STROKE_WIDTH
                 style = Paint.Style.STROKE
             }
         }
 
         override fun reset() {
-            mPath.reset()
+            path.reset()
         }
     }

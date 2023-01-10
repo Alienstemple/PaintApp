@@ -13,19 +13,19 @@ class DrawView(
     attributeSet: AttributeSet? = null
 ) : View(context, attributeSet) {
 
-    private lateinit var mFigure: AbstractFigure
-    private var mFigureList: ArrayList<AbstractFigure> = arrayListOf()
+    private lateinit var figure: AbstractFigure
+    private var figureList: ArrayList<AbstractFigure> = arrayListOf()
 
     var figureType = FigureType.RECT
     var currentColor = Color.BLACK
 
     fun reset() {
-        mFigureList.clear()
+        figureList.clear()
         invalidate()
     }
 
     fun back() {
-        mFigureList.removeLastOrNull()
+        figureList.removeLastOrNull()
         invalidate()
     }
 
@@ -37,28 +37,28 @@ class DrawView(
 
         return when (action) {
             MotionEvent.ACTION_DOWN -> {
-                mFigure = FigureFactory().createFigure(figureType, currentColor, point)
-                mFigure.setupPaint()
-                mFigure.onTouchEventDown(event)
-                mFigureList.add(mFigure)
+                figure = FigureFactory().createFigure(figureType, currentColor, point)
+                figure.setupPaint()
+                figure.onTouchEventDown(event)
+                figureList.add(figure)
                 true
             }
             MotionEvent.ACTION_POINTER_DOWN -> {
-                mFigure.onTouchEventDown(event)
+                figure.onTouchEventDown(event)
                 true
             }
 
             MotionEvent.ACTION_MOVE -> {
                 // Запретим двигать нулевой индекс:
                 Log.d("Poly", "Registered action.MOVE")
-                mFigure.onTouchEventMove(event)
+                figure.onTouchEventMove(event)
                 invalidate()
 
                 true
             }
             MotionEvent.ACTION_UP,
             MotionEvent.ACTION_POINTER_UP -> {
-                mFigure.onTouchEventUp(event)
+                figure.onTouchEventUp(event)
                 true
             }
 
@@ -70,7 +70,7 @@ class DrawView(
 
     override fun onDraw(canvas: Canvas?) {
         canvas?.let {
-            mFigureList.forEach { it.onDraw(canvas) }
+            figureList.forEach { it.onDraw(canvas) }
         }
 
     }

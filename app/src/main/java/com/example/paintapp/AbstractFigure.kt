@@ -5,7 +5,7 @@ import android.graphics.Paint
 import android.view.MotionEvent
 
 abstract class AbstractFigure {
-    abstract val mPaint: Paint
+    abstract val paint: Paint
     abstract fun onTouchEventDown(event: MotionEvent)
     abstract fun onTouchEventMove(event: MotionEvent)
     abstract fun onTouchEventUp(event: MotionEvent)

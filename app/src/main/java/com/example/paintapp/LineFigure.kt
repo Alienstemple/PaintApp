@@ -7,19 +7,19 @@ import android.util.Log
 import android.view.MotionEvent
 
 class LineFigure(
-    val mPath: Path, val mColor: Int
+    val path: Path, val color: Int
 ) : AbstractFigure() {
 
-    override val mPaint = Paint()
-//    private val mPath = Path()
+    override val paint = Paint()
+//    private val path = Path()
 
     override fun onTouchEventDown(event: MotionEvent) {
-        mPath.moveTo(event.x, event.y)
+        path.moveTo(event.x, event.y)
         Log.d("Line", "Touch down")
     }
 
     override fun onTouchEventMove(event: MotionEvent) {
-        mPath.lineTo(event.x, event.y)  // TODO call invalidate() on upper level!
+        path.lineTo(event.x, event.y)  // TODO call invalidate() on upper level!
         Log.d("Line", "Move")
     }
 
@@ -27,20 +27,20 @@ class LineFigure(
     }
 
     override fun onDraw(canvas: Canvas) {
-        canvas.drawPath(mPath, mPaint)
+        canvas.drawPath(path, paint)
         Log.d("Line", "draw line")
     }
 
     override fun setupPaint() {
-        mPaint.apply {
+        paint.apply {
             flags = Paint.ANTI_ALIAS_FLAG
-            color = mColor
+            color = color
             strokeWidth = DrawView.STROKE_WIDTH
             style = Paint.Style.STROKE
         }
     }
 
     override fun reset() {
-        mPath.reset()
+        path.reset()
     }
 }
