@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import kotlin.random.Random
 
 class DrawView(
     context: Context,
@@ -27,6 +28,43 @@ class DrawView(
         mFigureList.removeLastOrNull()
         invalidate()
     }
+
+//    override fun onTouchEvent(event: MotionEvent?): Boolean {
+//        val action = event?.action
+//        val mCurrentPoint = PointF(event!!.x, event.y)
+//
+//        return when (action) {
+//            MotionEvent.ACTION_DOWN -> {
+//
+//                val currentColor = Color.argb(
+//                    255,
+//                    Random.nextInt(0, 255),
+//                    Random.nextInt(0, 255),
+//                    Random.nextInt(0, 255)
+//                )
+//
+//                mFigure = FigureFactory().createFigure(figureType, currentColor, mCurrentPoint)
+//                mFigure.setupPaint()
+//                mFigure.onTouchEventDown(event)
+//                mFigureList.add(mFigure)
+//                true
+//            }
+//
+//            MotionEvent.ACTION_MOVE -> {
+//                mFigure.onTouchEventMove(event)
+//                invalidate()
+//                true
+//            }
+//            MotionEvent.ACTION_UP -> {
+//                mFigure.onTouchEventUp(event)
+//                true
+//            }
+//
+//            else -> {
+//                super.onTouchEvent(event)
+//            }
+//        }
+//    }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val action = event.actionMasked
