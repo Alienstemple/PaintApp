@@ -9,7 +9,6 @@ class StraightFigure(
     val origin: PointF, var current: PointF, val paintColor: Int
 ) : AbstractFigure() {
 
-    override val paint = Paint()
 
     override fun onTouchEventDown(event: MotionEvent) {
     }

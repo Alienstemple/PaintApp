@@ -10,9 +10,6 @@ class LineFigure(
     val linePath: Path, val paintColor: Int
 ) : AbstractFigure() {
 
-    override val paint = Paint()
-//    private val linePath = Path()
-
     override fun onTouchEventDown(event: MotionEvent) {
         linePath.moveTo(event.x, event.y)
         Log.d("Line", "Touch down")

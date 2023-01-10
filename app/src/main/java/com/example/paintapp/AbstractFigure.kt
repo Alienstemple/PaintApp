@@ -5,7 +5,7 @@ import android.graphics.Paint
 import android.view.MotionEvent
 
 abstract class AbstractFigure {
-    abstract val paint: Paint
+    val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     abstract fun onTouchEventDown(event: MotionEvent)
     abstract fun onTouchEventMove(event: MotionEvent)
     abstract fun onTouchEventUp(event: MotionEvent)

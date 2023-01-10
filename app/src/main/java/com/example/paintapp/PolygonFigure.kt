@@ -11,7 +11,6 @@ class PolygonFigure (
     val path: Path, val paintColor: Int
 ) : AbstractFigure() {
 
-    override val paint = Paint()
     private val vertices = HashMap<Int, PointF>()
 
     /**

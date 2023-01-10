@@ -29,7 +29,7 @@ class DrawView(
         invalidate()
     }
 
-    override fun onTouchEvent(event: MotionEvent): Boolean {
+        override fun onTouchEvent(event: MotionEvent): Boolean {
         val action = event.actionMasked
         val pointerIndex = event.actionIndex
         val pointerId = event.getPointerId(pointerIndex)
@@ -38,7 +38,9 @@ class DrawView(
         return when (action) {
             MotionEvent.ACTION_DOWN -> {
                 Log.d("Main", "CurrentColor = $currentColor")
+//                figure = FigureFactory().createFigure(figureType, currentColor, point)
                 figure = FigureFactory().createFigure(figureType, currentColor, point)
+
                 figure.setupPaint()
                 figure.onTouchEventDown(event)
                 figureList.add(figure)

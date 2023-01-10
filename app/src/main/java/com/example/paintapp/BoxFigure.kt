@@ -12,7 +12,6 @@ class BoxFigure(
     val paintColor: Int
 ) : AbstractFigure() {
 
-    override val paint = Paint()
     private val vertices = HashMap<Int, PointF>()
 
     override fun onTouchEventDown(event: MotionEvent) {
