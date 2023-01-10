@@ -82,8 +82,6 @@ class DrawView(
             }
             MotionEvent.ACTION_POINTER_DOWN -> {
                 mFigure.onTouchEventDown(event)
-                mFigure.reset()
-                invalidate()
                 true
             }
 
@@ -91,7 +89,6 @@ class DrawView(
                 // Запретим двигать нулевой индекс:
                 Log.d("Poly", "Registered action.MOVE")
                 mFigure.onTouchEventMove(event)
-                mFigure.reset()
                 invalidate()
 
                 true

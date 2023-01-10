@@ -37,6 +37,7 @@ class PolygonFigure (
             Log.d("Poly","Action.MOVE index = $i")
             vertices[i] = point
         }
+        reset()
     }
 
     override fun onTouchEventUp(event: MotionEvent) {

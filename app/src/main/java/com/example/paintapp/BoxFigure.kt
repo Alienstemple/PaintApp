@@ -18,7 +18,8 @@ class BoxFigure(
     }
 
     override fun onTouchEventMove(event: MotionEvent) {
-        mCurrent.set(event.x, event.y)
+//        mCurrent.set(event.x, event.y) // FIXME doesn't work
+        mCurrent = PointF(event.x, event.y)
     }
 
     override fun onTouchEventUp(event: MotionEvent) {
