@@ -7,4 +7,5 @@
     <string name="step_back_text">Назад</string>
     <string name="polygon">Многоугольники</string>
     <string name="change_color">цвет</string>
+    <string name="open_polygon">Открытый многоугольник</string>
 </resources>

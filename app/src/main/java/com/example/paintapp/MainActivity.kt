@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         val btnReset = findViewById<Button>(R.id.reset_button)
         val btnChangeColor = findViewById<Button>(R.id.chng_color_button)
+        val btnOpenPolygon = findViewById<Button>(R.id.draw_open_polygon)
         val btnPolygon = findViewById<Button>(R.id.draw_polygon)
         val btnRect = findViewById<Button>(R.id.draw_rect)
         val btnLine = findViewById<Button>(R.id.draw_line)
@@ -35,6 +36,10 @@ class MainActivity : AppCompatActivity() {
                 Random.nextInt(0, 255),
                 Random.nextInt(0, 255)
             )
+        }
+
+        btnOpenPolygon.setOnClickListener {
+            drawView.figureType = FigureType.OPENPOLY
         }
 
         btnPolygon.setOnClickListener {

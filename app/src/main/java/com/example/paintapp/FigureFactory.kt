@@ -9,5 +9,6 @@ class FigureFactory {
         FigureType.LINE -> LineFigure(Path(), currentColor)
         FigureType.STRAIGHT -> StraightFigure(mCurrentPoint, mCurrentPoint, currentColor)
         FigureType.POLY -> PolygonFigure(Path(), currentColor)
+        FigureType.OPENPOLY -> OpenPolyFigure(Path(), currentColor)
     }
 }
