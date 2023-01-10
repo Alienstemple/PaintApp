@@ -3,33 +3,45 @@ package com.example.paintapp
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.PointF
+import android.util.Log
 import android.view.MotionEvent
 import java.lang.StrictMath.max
 import java.lang.StrictMath.min
 
 class BoxFigure(
-    val mOrigin: PointF, var mCurrent: PointF, val mColor: Int
+    val mColor: Int
 ) : AbstractFigure() {
 
     override val mPaint = Paint()
+    private val vertices = HashMap<Int, PointF>()
 
     override fun onTouchEventDown(event: MotionEvent) {
-        // mCurrent, mOrigin already initialized
+        val pointerIndex = event.actionIndex
+        val pointerId = event.getPointerId(pointerIndex)
+        val point = PointF(event.getX(pointerIndex), event.getY(pointerIndex))
+        vertices[pointerIndex] = point
+        val vertMapToString: String = vertices.forEach { (k, v) -> "$k , ${v.x}, ${v.y}; " }.toString()
+        Log.d("Poly", "Action.DOWN, index = $pointerIndex, id = ${pointerId}, (x,y) = (${point.x},${point.y})" +
+                "vertices: $vertMapToString")
     }
 
     override fun onTouchEventMove(event: MotionEvent) {
-//        mCurrent.set(event.x, event.y) // FIXME doesn't work
-        mCurrent = PointF(event.x, event.y)
+
+        for (i in 0 until event.pointerCount) {
+            val point = PointF(event.getX(i), event.getY(i))
+            Log.d("Poly","Action.MOVE index = $i")
+            vertices[i] = point
+        }
     }
 
     override fun onTouchEventUp(event: MotionEvent) {
     }
 
     override fun onDraw(canvas: Canvas) {
-        val left = min(mOrigin.x, mCurrent.x)
-        val right = max(mOrigin.x, mCurrent.x)
-        val top = max(mOrigin.y, mCurrent.y)
-        val bottom = min(mOrigin.y, mCurrent.y)
+        val left = vertices.minBy { it.value.x }.value.x
+        val right = vertices.maxBy { it.value.x }.value.x
+        val top = vertices.maxBy { it.value.y }.value.y
+        val bottom = vertices.minBy { it.value.y }.value.y
         canvas.drawRect(left, top, right, bottom, mPaint)
     }
 
