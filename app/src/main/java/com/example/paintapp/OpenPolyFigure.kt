@@ -6,10 +6,11 @@ import android.graphics.Path
 import android.graphics.PointF
 import android.util.Log
 import android.view.MotionEvent
+import androidx.annotation.ColorInt
 
 class OpenPolyFigure (
-        val path: Path, val paintColor: Int
-    ) : AbstractFigure() {
+        val path: Path, @ColorInt paintColor: Int
+) : AbstractFigure(paintColor) {
 
         private val vertices = HashMap<Int, PointF>()
 
@@ -59,15 +60,6 @@ class OpenPolyFigure (
             }
             // Наконец, происходит отрисовка фигуры
             canvas.drawPath(path, paint)
-        }
-
-        override fun setupPaint() {
-            paint.apply {
-                flags = Paint.ANTI_ALIAS_FLAG
-                color = paintColor
-                strokeWidth = DrawView.STROKE_WIDTH
-                style = Paint.Style.STROKE
-            }
         }
 
         override fun reset() {

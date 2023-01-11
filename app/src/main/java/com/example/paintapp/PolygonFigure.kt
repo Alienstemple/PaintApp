@@ -6,10 +6,11 @@ import android.graphics.Path
 import android.graphics.PointF
 import android.util.Log
 import android.view.MotionEvent
+import androidx.annotation.ColorInt
 
 class PolygonFigure (
-    val path: Path, val paintColor: Int
-) : AbstractFigure() {
+    val path: Path, @ColorInt paintColor: Int
+) : AbstractFigure(paintColor) {
 
     private val vertices = HashMap<Int, PointF>()
 
@@ -65,16 +66,6 @@ class PolygonFigure (
 //        path.close()  // FIXME предпоследний отрезок не рисует. Убрать close - рисует.
         // Наконец, происходит отрисовка фигуры
         canvas.drawPath(path, paint)
-    }
-
-    override fun setupPaint() {
-        paint.apply {
-            flags = Paint.ANTI_ALIAS_FLAG
-            color = paintColor
-            strokeWidth = DrawView.STROKE_WIDTH
-            style = Paint.Style.STROKE
-        }
-        Log.d("Main", "In setupPaint color = ${paint.color}")
     }
 
     override fun reset() {

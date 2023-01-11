@@ -5,12 +5,13 @@ import android.graphics.Paint
 import android.graphics.PointF
 import android.util.Log
 import android.view.MotionEvent
+import androidx.annotation.ColorInt
 import java.lang.StrictMath.max
 import java.lang.StrictMath.min
 
 class BoxFigure(
-    val paintColor: Int
-) : AbstractFigure() {
+    @ColorInt paintColor: Int
+) : AbstractFigure(paintColor) {
 
     private val vertices = HashMap<Int, PointF>()
 
@@ -42,15 +43,6 @@ class BoxFigure(
         val top = vertices.maxBy { it.value.y }.value.y
         val bottom = vertices.minBy { it.value.y }.value.y
         canvas.drawRect(left, top, right, bottom, paint)
-    }
-
-    override fun setupPaint() {
-        paint.apply {
-            flags = Paint.ANTI_ALIAS_FLAG
-            color = paintColor
-            strokeWidth = DrawView.STROKE_WIDTH
-            style = Paint.Style.STROKE
-        }
     }
 
     override fun reset() {

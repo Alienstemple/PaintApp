@@ -9,7 +9,7 @@ class FigureFactory {
     fun createFigure(figureType: FigureType, @ColorInt currentColor: Int, currentPoint: PointF): AbstractFigure = when (figureType) {
         FigureType.RECT -> BoxFigure(currentColor)
         FigureType.LINE -> LineFigure(Path(), currentColor)
-        FigureType.STRAIGHT -> StraightFigure(currentPoint, PointF(currentPoint.x, currentPoint.y), currentColor)  // TODO check
+        FigureType.STRAIGHT -> StraightFigure(currentPoint, PointF(currentPoint.x, currentPoint.y), currentColor)
         FigureType.POLY -> PolygonFigure(Path(), currentColor)
         FigureType.OPENPOLY -> OpenPolyFigure(Path(), currentColor)
     }
