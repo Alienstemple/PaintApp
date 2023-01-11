@@ -1,7 +1,6 @@
 package com.example.paintapp
 
 import android.graphics.Canvas
-import android.graphics.Paint
 import android.graphics.Path
 import android.util.Log
 import android.view.MotionEvent
@@ -18,7 +17,7 @@ class LineFigure(
     }
 
     override fun onTouchEventMove(event: MotionEvent) {
-        linePath.lineTo(event.x, event.y)  // TODO call invalidate() on upper level!
+        linePath.lineTo(event.x, event.y)  // call invalidate() on upper level!
         Log.d("Line", "Move")
     }
 
@@ -30,7 +29,4 @@ class LineFigure(
         Log.d("Line", "draw line")
     }
 
-    override fun reset() {
-        linePath.reset()
-    }
 }

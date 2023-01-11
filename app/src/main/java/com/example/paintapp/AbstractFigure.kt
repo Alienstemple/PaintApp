@@ -16,5 +16,4 @@ abstract class AbstractFigure(@ColorInt val figureColor: Int) {
     abstract fun onTouchEventMove(event: MotionEvent)
     abstract fun onTouchEventUp(event: MotionEvent)
     abstract fun onDraw(canvas: Canvas)
-    abstract fun reset()
 }

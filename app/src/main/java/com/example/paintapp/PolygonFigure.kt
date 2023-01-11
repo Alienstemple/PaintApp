@@ -38,7 +38,7 @@ class PolygonFigure (
             Log.d("Poly","Action.MOVE index = $i")
             vertices[i] = point
         }
-        reset()
+        path.reset()
     }
 
     override fun onTouchEventUp(event: MotionEvent) {
@@ -69,7 +69,4 @@ class PolygonFigure (
         canvas.drawPath(path, paint)
     }
 
-    override fun reset() {
-        path.reset()
-    }
 }

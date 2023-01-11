@@ -1,7 +1,6 @@
 package com.example.paintapp
 
 import android.graphics.Canvas
-import android.graphics.Paint
 import android.graphics.PointF
 import android.view.MotionEvent
 import androidx.annotation.ColorInt
@@ -23,9 +22,5 @@ class StraightFigure(
 
     override fun onDraw(canvas: Canvas) {
         canvas.drawLine(origin.x, origin.y, current.x, current.y, paint)
-    }
-
-    override fun reset() {
-        // Box list clears on top level
     }
 }

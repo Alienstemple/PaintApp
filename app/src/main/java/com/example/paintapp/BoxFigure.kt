@@ -1,13 +1,10 @@
 package com.example.paintapp
 
 import android.graphics.Canvas
-import android.graphics.Paint
 import android.graphics.PointF
 import android.util.Log
 import android.view.MotionEvent
 import androidx.annotation.ColorInt
-import java.lang.StrictMath.max
-import java.lang.StrictMath.min
 
 class BoxFigure(
     @ColorInt paintColor: Int
@@ -43,9 +40,5 @@ class BoxFigure(
         val top = vertices.maxBy { it.value.y }.value.y
         val bottom = vertices.minBy { it.value.y }.value.y
         canvas.drawRect(left, top, right, bottom, paint)
-    }
-
-    override fun reset() {
-        // Box list clears on top level
     }
 }
