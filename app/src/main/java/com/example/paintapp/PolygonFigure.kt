@@ -9,9 +9,10 @@ import android.view.MotionEvent
 import androidx.annotation.ColorInt
 
 class PolygonFigure (
-    val path: Path, @ColorInt paintColor: Int
+    @ColorInt paintColor: Int
 ) : AbstractFigure(paintColor) {
 
+    private val path = Path()
     private val vertices = HashMap<Int, PointF>()
 
     /**

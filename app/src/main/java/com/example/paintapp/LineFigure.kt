@@ -8,8 +8,9 @@ import android.view.MotionEvent
 import androidx.annotation.ColorInt
 
 class LineFigure(
-    val linePath: Path, @ColorInt paintColor: Int
+    @ColorInt paintColor: Int
 ) : AbstractFigure(paintColor) {
+    private val linePath = Path()
 
     override fun onTouchEventDown(event: MotionEvent) {
         linePath.moveTo(event.x, event.y)
