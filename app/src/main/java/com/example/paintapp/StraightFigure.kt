@@ -6,7 +6,7 @@ import android.graphics.PointF
 import android.view.MotionEvent
 
 class StraightFigure(
-    val origin: PointF, var current: PointF, val paintColor: Int
+    val origin: PointF, val current: PointF, val paintColor: Int
 ) : AbstractFigure() {
 
 
@@ -14,8 +14,8 @@ class StraightFigure(
     }
 
     override fun onTouchEventMove(event: MotionEvent) {
-//        current.set(event.x, event.y)  // FIXME doesn't work
-        current = PointF(event.x, event.y)
+        current.set(event.x, event.y)  // FIXME doesn't work
+//        current = PointF(event.x, event.y)
     }
 
     override fun onTouchEventUp(event: MotionEvent) {
