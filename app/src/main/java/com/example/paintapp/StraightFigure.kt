@@ -6,7 +6,7 @@ import android.view.MotionEvent
 import androidx.annotation.ColorInt
 
 class StraightFigure(
-    val origin: PointF, val current: PointF, @ColorInt paintColor: Int
+    private val origin: PointF, private val current: PointF, @ColorInt paintColor: Int
 ) : AbstractFigure(paintColor) {
 
 
