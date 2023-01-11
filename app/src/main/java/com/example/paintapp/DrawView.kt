@@ -1,12 +1,13 @@
 package com.example.paintapp
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.PointF
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
-import kotlin.random.Random
 
 class DrawView(
     context: Context,
@@ -29,7 +30,7 @@ class DrawView(
         invalidate()
     }
 
-        override fun onTouchEvent(event: MotionEvent): Boolean {
+    override fun onTouchEvent(event: MotionEvent): Boolean {
         val action = event.actionMasked
         val pointerIndex = event.actionIndex
         val pointerId = event.getPointerId(pointerIndex)
@@ -49,7 +50,6 @@ class DrawView(
             }
 
             MotionEvent.ACTION_MOVE -> {
-                // Запретим двигать нулевой индекс:
                 Log.d("Poly", "Registered action.MOVE")
                 figure.onTouchEventMove(event)
                 invalidate()

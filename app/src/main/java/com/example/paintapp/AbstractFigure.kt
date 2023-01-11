@@ -12,6 +12,7 @@ abstract class AbstractFigure(@ColorInt val figureColor: Int) {
         strokeWidth = DrawView.STROKE_WIDTH
         style = Paint.Style.STROKE
     }
+
     abstract fun onTouchEventDown(event: MotionEvent)
     abstract fun onTouchEventMove(event: MotionEvent)
     abstract fun onDraw(canvas: Canvas)

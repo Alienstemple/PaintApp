@@ -24,9 +24,7 @@ class MainActivity : AppCompatActivity() {
         val btnBack = findViewById<Button>(R.id.step_back)
 
         btnReset.setOnClickListener {
-//            drawView.reset()
             drawView.reset()
-//            lineFigureView.reset()
         }
 
         btnChangeColor.setOnClickListener {
@@ -48,17 +46,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnRect.setOnClickListener {
-//            drawView.currentColor = Color.BLUE
             drawView.figureType = FigureType.RECT
             Log.d("Tag", "Rectangular chosen")
         }
 
         btnLine.setOnClickListener {
-//            drawView.currentColor = Color.GREEN
             drawView.figureType = FigureType.LINE
         }
 
-        btnStraightLine.setOnClickListener{
+        btnStraightLine.setOnClickListener {
             drawView.figureType = FigureType.STRAIGHT
         }
 

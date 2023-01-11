@@ -31,6 +31,9 @@ class BoxFigure(
         }
     }
 
+    /**
+     * Multitouch, прямоугольник рисуется по максимальной площеди касания пальцев
+     */
     override fun onDraw(canvas: Canvas) {
         val left = vertices.minBy { it.value.x }.value.x
         val right = vertices.maxBy { it.value.x }.value.x
