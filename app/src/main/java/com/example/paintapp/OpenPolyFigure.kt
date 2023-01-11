@@ -45,9 +45,6 @@ class OpenPolyFigure(
         path.reset()
     }
 
-    override fun onTouchEventUp(event: MotionEvent) {
-    }
-
     /**
      * Отрисовываем многоугольник - последовательность moveTo и drawPath
      */

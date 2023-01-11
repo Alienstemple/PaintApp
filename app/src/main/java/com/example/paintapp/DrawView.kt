@@ -58,7 +58,6 @@ class DrawView(
             }
             MotionEvent.ACTION_UP,
             MotionEvent.ACTION_POINTER_UP -> {
-                figure.onTouchEventUp(event)
                 true
             }
 

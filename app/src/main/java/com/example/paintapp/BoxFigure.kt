@@ -31,9 +31,6 @@ class BoxFigure(
         }
     }
 
-    override fun onTouchEventUp(event: MotionEvent) {
-    }
-
     override fun onDraw(canvas: Canvas) {
         val left = vertices.minBy { it.value.x }.value.x
         val right = vertices.maxBy { it.value.x }.value.x

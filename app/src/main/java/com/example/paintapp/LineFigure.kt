@@ -21,9 +21,6 @@ class LineFigure(
         Log.d("Line", "Move")
     }
 
-    override fun onTouchEventUp(event: MotionEvent) {
-    }
-
     override fun onDraw(canvas: Canvas) {
         canvas.drawPath(linePath, paint)
         Log.d("Line", "draw line")

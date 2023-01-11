@@ -17,9 +17,6 @@ class StraightFigure(
         current.set(event.x, event.y)
     }
 
-    override fun onTouchEventUp(event: MotionEvent) {
-    }
-
     override fun onDraw(canvas: Canvas) {
         canvas.drawLine(origin.x, origin.y, current.x, current.y, paint)
     }
