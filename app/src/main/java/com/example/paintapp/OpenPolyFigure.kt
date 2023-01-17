@@ -54,9 +54,9 @@ class OpenPolyFigure(
         }
         // Путь "останавливается" в вершинах
         vertices.forEach { (k, v) ->
+            Log.d("MAP", "$k $v")
             if (k != 0) {
                 path.lineTo(v.x, v.y)
-                path.moveTo(v.x, v.y)
             }
         }
         // Наконец, происходит отрисовка фигуры

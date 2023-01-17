@@ -56,14 +56,10 @@ class PolygonFigure(
         vertices.forEach { (k, v) ->
             if (k != 0) {
                 path.lineTo(v.x, v.y)
-                path.moveTo(v.x, v.y)
             }
         }
         // И завершается в начальной точке
-        vertices[0]?.let {
-            path.lineTo(it.x, it.y)
-            path.moveTo(it.x, it.y)
-        }
+        path.close()
         // Наконец, происходит отрисовка фигуры
         canvas.drawPath(path, paint)
     }
